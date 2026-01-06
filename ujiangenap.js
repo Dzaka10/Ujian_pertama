@@ -2,12 +2,13 @@ let totaltrans = 0
 let totaldis = 0
 let totalakhir = 0
 let rata=0
+let jumlahpembeli=2
 
 
 
 datatrans = []
 
-for (let i = 1; i <= 2; i++){
+for (let i = 1; i <= jumlahpembeli; i++){
 	jbaju = prompt(`mau beli baju apa?`)
 	satuan = parseInt(prompt(`harga satuan ${jbaju}`))
 	jumlahbeli= parseInt(prompt(`beli berapa?`))
@@ -15,22 +16,28 @@ for (let i = 1; i <= 2; i++){
 	
 	
 	if(jumlahbeli <= 10 && sesi === "pagi"){ // pagi
-		totaldis = satuan * 0
-	} else if (jumlahbeli <= 20){
-		totaldis = Math.floor(satuan*(jumlahbeli-10)*0.05) + (satuan * 10 * 0.05)
-	} else if (jumlahbeli >  20);{
-		totaldis = Math.floor(10 * satuan * 0.05) + (10* satuan * 0.12) + ((jumlahbeli-20)*0.22)
-	} 
-	
-	if(jumlahbeli <= 10 && sesi === "malam"){ // malam
-		totaldis = Math(satuan * 0.05)
-	} else if (jumlahbeli <= 20){
-		totaldis = Math.floor(satuan*(jumlahbeli-10)*0.1) + (satuan * 10 * 0.18)
-	} else if (jumlahbeli >  20);{
-		totaldis = Math.floor(10 * satuan * 0.15) + (10* satuan * 0.25) + ((jumlahbeli-20)*0.35)
+		if(jumlahbeli <= 10){
+			totaldis = satuan * 0
+		} else if (jumlahbeli <= 20){
+			totaldis = Math.floor(satuan*(jumlahbeli-10)*0.05) + (satuan * 10 * 0.05)
+		} else {
+			totaldis = Math.floor(10 * satuan * 0.05) + (10* satuan * 0.12) + ((jumlahbeli-20)*0.22)
+		} 
+		
 	}
 	
-	if(sesi === "siang"){
+	else if(sesi === "malam"){ // malam
+		if(jumlahbeli <= 10){
+			totaldis = Math(satuan * 0.05)
+		} else if (jumlahbeli <= 20){
+			totaldis = Math.floor(satuan*(jumlahbeli-10)*0.1) + (satuan * 10 * 0.18)
+		} else{
+			totaldis = ((jumlahbeli%20) * satuan * 0.35) + ((jumlahbeli-20) * satuan * 0.25) + ((jumlahbeli-20) * satuan * 0.15)
+		}
+	 
+	}
+
+	else if(sesi === "siang"){
 		totaldis = satuan * 0 
 	}
 	
@@ -54,7 +61,7 @@ console.log(`sesi beli baju: ${datatrans[10]}`)
 console.log(`diskon baju: ${datatrans[11]}`)
 console.log(`harga baju: ${datatrans[12]}`)
 console.log(`total bayar baju: ${datatrans[13]}`)
-console.log(`total transaksi 2`)
-console.log(`total diskon: ${datatrans[4] + [11]} `)	
-console.log(`total pendapatan: ${datatrans[6] + [13]}`)
-console.log(`rata-rata pendapatan: ${datatrans[6] + [13] /2}`)
+console.log(`total transaksi ${jumlahpembeli}`)
+console.log(`total diskon: ${datatrans[4] + datatrans[11]} `)	
+console.log(`total pendapatan: ${datatrans[6] + datatrans[13]}`)
+console.log(`rata-rata pendapatan: ${(datatrans[6] + datatrans[13])/2}`)
