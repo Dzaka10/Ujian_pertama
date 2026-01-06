@@ -15,13 +15,13 @@ for (let i = 1; i <= jumlahpembeli; i++){
 	sesi = prompt(`beli di sesi kapan?`)	
 	
 	
-	if(jumlahbeli <= 10 && sesi === "pagi"){ // pagi
+	if( sesi === "pagi"){ // pagi
 		if(jumlahbeli <= 10){
 			totaldis = satuan * 0
 		} else if (jumlahbeli <= 20){
 			totaldis = Math.floor(satuan*(jumlahbeli-10)*0.05) + (satuan * 10 * 0.05)
 		} else {
-			totaldis = Math.floor(10 * satuan * 0.05) + (10* satuan * 0.12) + ((jumlahbeli-20)*0.22)
+			totaldis = Math.floor(10 * satuan * 0.07) + (10* satuan * 0.15) + ((jumlahbeli-20)*0.25)
 		} 
 		
 	}
